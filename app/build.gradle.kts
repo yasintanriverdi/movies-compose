@@ -65,4 +65,10 @@ dependencies {
     implementation(Dependencies.Google.material)
     implementation(Dependencies.Dagger.hiltCore)
     kapt(Dependencies.Dagger.hiltCompiler)
+
+    // Retrofit-OkHttp
+    implementation(Dependencies.Retrofit.retrofit)
+    implementation(Dependencies.Retrofit.moshi)
+    implementation(Dependencies.OkHttp.okhttp)
+    implementation(Dependencies.OkHttp.loggingInterceptor)
 }

@@ -19,4 +19,14 @@ object Dependencies {
         const val hiltCore = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
         const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
     }
+
+    object Retrofit {
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    }
+
+    object OkHttp {
+        const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    }
 }
