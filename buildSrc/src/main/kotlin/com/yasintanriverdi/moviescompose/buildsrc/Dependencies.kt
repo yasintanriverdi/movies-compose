@@ -9,6 +9,14 @@ object Dependencies {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+
+        object Compose {
+            const val ui = "androidx.compose.ui:ui:${Versions.compose}"
+            const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
+            const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
+            const val material = "androidx.compose.material:material:${Versions.compose}"
+            const val livedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+        }
     }
 
     object Google {

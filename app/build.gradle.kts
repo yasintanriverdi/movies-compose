@@ -22,6 +22,11 @@ android {
         testInstrumentationRunner = AppConfigs.testInstrumentationRunner
     }
 
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
     buildTypes {
 
         getByName("release") {
@@ -35,6 +40,7 @@ android {
         getByName("debug") {
             versionNameSuffix = "-dev"
             applicationIdSuffix = ".debug"
+            isDebuggable = true
         }
 
         forEach {
@@ -48,11 +54,6 @@ android {
             )
         }
     }
-
-    buildFeatures {
-        dataBinding = true
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -60,6 +61,13 @@ dependencies {
 
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
+
+    // Compose
+    implementation(Dependencies.AndroidX.Compose.ui)
+    implementation(Dependencies.AndroidX.Compose.foundation)
+    implementation(Dependencies.AndroidX.Compose.material)
+    implementation(Dependencies.AndroidX.Compose.runtime)
+    implementation(Dependencies.AndroidX.Compose.livedata)
 
     // Google
     implementation(Dependencies.Google.material)

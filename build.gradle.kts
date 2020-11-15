@@ -60,8 +60,12 @@ subprojects {
 
     project.tasks.withType(KotlinCompile::class.java) {
         kotlinOptions {
-            freeCompilerArgs = listOf("-Xjsr305=strict", "-progressive")
+            freeCompilerArgs = listOf(
+                "-Xallow-jvm-ir-dependencies",
+                "-Xskip-prerelease-check"
+            )
             jvmTarget = "1.8"
+            useIR = true
         }
     }
 
@@ -74,6 +78,14 @@ subprojects {
                     defaultConfig {
                         minSdkVersion(AppConfigs.Versions.minSdk)
                         targetSdkVersion(AppConfigs.Versions.targetSdk)
+                    }
+
+                    buildFeatures.compose = true
+                    buildFeatures.viewBinding = true
+
+                    composeOptions {
+                        kotlinCompilerExtensionVersion = Versions.compose
+                        kotlinCompilerVersion = Versions.kotlin
                     }
 
                     compileOptions {
@@ -92,6 +104,8 @@ subprojects {
                             java.srcDir("src/androidTest/kotlin")
                         }
                     }
+
+                    lintOptions.lintConfig = rootProject.file("lint.xml")
                 }
             }
 

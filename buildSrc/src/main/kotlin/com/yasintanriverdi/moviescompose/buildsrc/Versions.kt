@@ -6,6 +6,7 @@ object Versions {
     const val appCompat = "1.1.0"
     const val test = "1.2.0"
     const val coreKtx = "1.2.0"
+    const val compose = "1.0.0-alpha07"
 
     // Google
     const val material = "1.1.0"
