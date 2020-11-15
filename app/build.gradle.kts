@@ -1,4 +1,5 @@
 import com.yasintanriverdi.moviescompose.buildsrc.AppConfigs
+import com.yasintanriverdi.moviescompose.buildsrc.utils.getLocalProperty
 
 plugins {
     id(Plugins.androidApplication)
@@ -21,6 +22,7 @@ android {
     }
 
     buildTypes {
+
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
@@ -32,6 +34,17 @@ android {
         getByName("debug") {
             versionNameSuffix = "-dev"
             applicationIdSuffix = ".debug"
+        }
+
+        forEach {
+            it.buildConfigField(
+                type = "String",
+                name = "TMDB_API_KEY", value = "\"${getLocalProperty("TMDB_API_KEY", project)}\""
+            )
+            it.buildConfigField(
+                type = "String",
+                name = "TMDB_API_BASE_URL", value = "\"https://api.themoviedb.org/3/\""
+            )
         }
     }
 
