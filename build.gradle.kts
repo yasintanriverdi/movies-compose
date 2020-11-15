@@ -17,6 +17,7 @@ buildscript {
     dependencies {
         classpath(Classpaths.gradle)
         classpath(Classpaths.kotlinGradle)
+        classpath(Classpaths.daggerHilt)
     }
 }
 

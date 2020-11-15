@@ -14,4 +14,9 @@ object Dependencies {
     object Google {
         const val material = "com.google.android.material:material:${Versions.material}"
     }
+
+    object Dagger {
+        const val hiltCore = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
+        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    }
 }

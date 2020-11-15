@@ -3,6 +3,7 @@ import com.yasintanriverdi.moviescompose.buildsrc.utils.getLocalProperty
 
 plugins {
     id(Plugins.androidApplication)
+    id(Plugins.daggerHilt)
     kotlin(Plugins.kotlinAndroid)
     kotlin(Plugins.kotlinAndroidExtensions)
     kotlin(Plugins.kotlinKapt)
@@ -60,5 +61,8 @@ dependencies {
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
 
+    // Google
     implementation(Dependencies.Google.material)
+    implementation(Dependencies.Dagger.hiltCore)
+    kapt(Dependencies.Dagger.hiltCompiler)
 }
