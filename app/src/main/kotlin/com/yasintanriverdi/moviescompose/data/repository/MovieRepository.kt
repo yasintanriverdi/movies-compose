@@ -4,8 +4,9 @@ import com.yasintanriverdi.moviescompose.data.datasource.MovieRemoteDataSource
 import com.yasintanriverdi.moviescompose.data.mapper.MoviesResponseToMovieMapper
 import com.yasintanriverdi.moviescompose.model.Movie
 import com.yasintanriverdi.moviescompose.model.Result
+import javax.inject.Inject
 
-class MovieRepository constructor(
+class MovieRepository @Inject constructor(
     private val movieRemoteDataSource: MovieRemoteDataSource,
     private val movieMapper: MoviesResponseToMovieMapper
 ) {

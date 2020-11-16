@@ -10,6 +10,8 @@ object Dependencies {
 
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
+        const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
+
         object Compose {
             const val ui = "androidx.compose.ui:ui:${Versions.compose}"
             const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
@@ -17,15 +19,24 @@ object Dependencies {
             const val material = "androidx.compose.material:material:${Versions.compose}"
             const val livedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
         }
+
+        object Lifecycle {
+            const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+            const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+            const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+            const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+        }
     }
 
     object Google {
         const val material = "com.google.android.material:material:${Versions.material}"
     }
 
-    object Dagger {
-        const val hiltCore = "com.google.dagger:hilt-android:${Versions.daggerHilt}"
-        const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.daggerHilt}"
+    object Hilt {
+        const val core = "com.google.dagger:hilt-android:${Versions.hilt}"
+        const val viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycle}"
+        const val compiler = "androidx.hilt:hilt-compiler:${Versions.hiltLifecycle}"
+        const val androidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     }
 
     object Retrofit {

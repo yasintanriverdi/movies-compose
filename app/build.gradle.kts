@@ -61,6 +61,11 @@ dependencies {
 
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
+    implementation(Dependencies.AndroidX.activityKtx)
+    implementation(Dependencies.AndroidX.Lifecycle.extensions)
+    implementation(Dependencies.AndroidX.Lifecycle.runtime)
+    implementation(Dependencies.AndroidX.Lifecycle.livedata)
+    implementation(Dependencies.AndroidX.Lifecycle.viewmodel)
 
     // Compose
     implementation(Dependencies.AndroidX.Compose.ui)
@@ -71,8 +76,10 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.material)
-    implementation(Dependencies.Dagger.hiltCore)
-    kapt(Dependencies.Dagger.hiltCompiler)
+    implementation(Dependencies.Hilt.core)
+    implementation(Dependencies.Hilt.viewmodel)
+    kapt(Dependencies.Hilt.compiler)
+    kapt(Dependencies.Hilt.androidCompiler)
 
     // Retrofit-OkHttp
     implementation(Dependencies.Retrofit.retrofit)

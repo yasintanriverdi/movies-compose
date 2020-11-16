@@ -37,7 +37,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideRetrofitBuilder(httpClient: OkHttpClient) =
+    fun provideRetrofitBuilder(httpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .client(httpClient)
             .baseUrl(BuildConfig.TMDB_API_BASE_URL)
@@ -45,5 +45,6 @@ object NetworkModule {
             .build()
 
     @Provides
-    fun provideMovieService(retrofit: Retrofit) = retrofit.create(MovieService::class.java)
+    fun provideMovieService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
 }
