@@ -1,6 +1,7 @@
 package com.yasintanriverdi.moviescompose.network
 
 import com.yasintanriverdi.moviescompose.BuildConfig
+import com.yasintanriverdi.moviescompose.network.adapter.NetworkResponseAdapterFactory
 import com.yasintanriverdi.moviescompose.network.interceptor.RequestInterceptor
 import com.yasintanriverdi.moviescompose.network.service.MovieService
 import dagger.Module
@@ -41,6 +42,7 @@ object NetworkModule {
         Retrofit.Builder()
             .client(httpClient)
             .baseUrl(BuildConfig.TMDB_API_BASE_URL)
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 
