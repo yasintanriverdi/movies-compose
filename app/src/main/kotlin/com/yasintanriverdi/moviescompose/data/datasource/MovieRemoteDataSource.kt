@@ -8,4 +8,7 @@ class MovieRemoteDataSource @Inject constructor(
 ) {
 
     suspend fun fetchMovies(page: Int, category: String) = movieService.fetchMovies(category, page)
+
+    suspend fun fetchMovieById(movieId: String) = movieService.fetchMovie(movieId)
+
 }

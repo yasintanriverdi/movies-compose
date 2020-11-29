@@ -26,7 +26,11 @@ fun Main(
             arguments = listOf(navArgument(argMovieId) { type = NavType.StringType })
         ) { backStackEntry ->
             backStackEntry.arguments?.getString(argMovieId)?.let {
-                MovieDetail(text = it)
+                MovieDetail(
+                    navController = navController,
+                    moviesViewModel = moviesViewModel,
+                    movieId = it
+                )
             }
         }
         composable(NavScreen.About.route) {
