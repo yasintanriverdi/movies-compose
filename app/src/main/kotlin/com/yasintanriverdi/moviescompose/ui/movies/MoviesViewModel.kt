@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.yasintanriverdi.moviescompose.data.repository.MovieRepository
 import com.yasintanriverdi.moviescompose.data.usecase.FetchMovieItemUseCase
+import com.yasintanriverdi.moviescompose.data.usecase.FetchMoviesUseCase
 import com.yasintanriverdi.moviescompose.model.Movie
 import com.yasintanriverdi.moviescompose.model.RepositoryResult
 import com.yasintanriverdi.moviescompose.model.UIState
@@ -19,12 +19,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class MoviesViewModel @ViewModelInject constructor(
-    private val movieRepository: MovieRepository,
+    private val fetchMoviesUseCase: FetchMoviesUseCase,
     private val fetchMovieItemUseCase: FetchMovieItemUseCase
 ) : ViewModel() {
 
     val movies: Flow<PagingData<Movie>> = Pager(PagingConfig(pageSize = 20)) {
-        MoviePagingSource(movieRepository)
+        MoviePagingSource(fetchMoviesUseCase)
     }.flow
 
     private val _viewStateFlow = MutableStateFlow(MovieDetailViewState())
@@ -32,8 +32,6 @@ class MoviesViewModel @ViewModelInject constructor(
 
     fun fetchMovie(movieId: String) {
         viewModelScope.launch {
-            _viewStateFlow.value = MovieDetailViewState(UIState.LOADING)
-
             when (val movieResult = fetchMovieItemUseCase.fetchMovieById(movieId)) {
                 is RepositoryResult.Success -> {
                     _viewStateFlow.value = MovieDetailViewState(

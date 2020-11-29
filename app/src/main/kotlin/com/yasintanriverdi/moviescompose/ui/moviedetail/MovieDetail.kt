@@ -33,7 +33,9 @@ fun MovieDetail(
 
     moviesViewModel.fetchMovie(movieId)
 
-    val stateFlow = moviesViewModel.viewStateFlow.collectAsState()
+    val stateFlow = moviesViewModel.viewStateFlow.collectAsState(
+        initial = MovieDetailViewState(uiState = UIState.LOADING)
+    )
     val viewState = stateFlow.value
 
     when (viewState.uiState) {
