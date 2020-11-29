@@ -62,6 +62,7 @@ dependencies {
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.activityKtx)
+    implementation(Dependencies.AndroidX.paging)
     implementation(Dependencies.AndroidX.Lifecycle.extensions)
     implementation(Dependencies.AndroidX.Lifecycle.runtime)
     implementation(Dependencies.AndroidX.Lifecycle.livedata)
@@ -73,6 +74,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.material)
     implementation(Dependencies.AndroidX.Compose.runtime)
     implementation(Dependencies.AndroidX.Compose.livedata)
+    implementation(Dependencies.AndroidX.Compose.navigation)
+    implementation(Dependencies.AndroidX.Compose.paging)
 
     // Google
     implementation(Dependencies.Google.material)

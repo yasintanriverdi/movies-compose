@@ -6,9 +6,14 @@ object Versions {
     const val appCompat = "1.1.0"
     const val test = "1.2.0"
     const val coreKtx = "1.3.2"
-    const val compose = "1.0.0-alpha07"
     const val lifecycle = "2.2.0"
     const val activity = "1.1.0"
+    const val paging = "3.0.0-alpha09"
+
+    // Compose
+    const val compose = "1.0.0-alpha07"
+    const val composeNavigation = "1.0.0-alpha02"
+    const val composePaging = "1.0.0-alpha02"
 
     // Google
     const val material = "1.1.0"

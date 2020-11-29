@@ -2,10 +2,8 @@ package com.yasintanriverdi.moviescompose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val purple200 = Color(0xFF651FFF)
-val purple500 = Color(0xFF6200EA)
-val background = Color(0xFF2B292B)
-val background800 = Color(0xFF424242)
-val background900 = Color(0xFF212121)
-val white87 = Color(0Xddffffff)
-val shimmerHighLight = Color(0xA3C2C2C2)
+val green200 = Color(0xffa5d6a7)
+val green500 = Color(0xff4caf50)
+val green700 = Color(0xff388e3c)
+val teal200 = Color(0xff80deea)
+val gradientGreenColors = listOf(green200, green500, green700)

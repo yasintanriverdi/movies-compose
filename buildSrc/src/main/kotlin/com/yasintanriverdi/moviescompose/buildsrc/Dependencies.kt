@@ -12,12 +12,16 @@ object Dependencies {
 
         const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"
 
+        const val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+
         object Compose {
             const val ui = "androidx.compose.ui:ui:${Versions.compose}"
             const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
             const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
             const val material = "androidx.compose.material:material:${Versions.compose}"
             const val livedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
+            const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
+            const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
         }
 
         object Lifecycle {
