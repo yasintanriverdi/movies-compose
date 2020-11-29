@@ -1,4 +1,4 @@
-package com.yasintanriverdi.moviescompose.ui.widgets
+package com.yasintanriverdi.moviescompose.ui.layout
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.preferredHeight

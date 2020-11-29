@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.yasintanriverdi.moviescompose.R
-import com.yasintanriverdi.moviescompose.ui.widgets.MoviesAppBar
+import com.yasintanriverdi.moviescompose.ui.layout.MoviesAppBar
 
 @Composable
 fun About(navController: NavController) {

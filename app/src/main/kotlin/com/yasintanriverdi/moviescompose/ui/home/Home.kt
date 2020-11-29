@@ -20,7 +20,7 @@ import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen
 import com.yasintanriverdi.moviescompose.ui.movies.Movies
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
-import com.yasintanriverdi.moviescompose.ui.widgets.MoviesAppBar
+import com.yasintanriverdi.moviescompose.ui.layout.MoviesAppBar
 
 @Composable
 fun Home(
