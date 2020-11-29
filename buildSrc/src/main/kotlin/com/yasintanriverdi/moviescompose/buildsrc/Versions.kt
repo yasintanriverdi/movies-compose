@@ -2,6 +2,8 @@ object Versions {
     const val kotlin = "1.4.10"
     const val gradle = "4.2.0-alpha16"
 
+    const val coroutines = "1.4.2"
+
     // AndroidX
     const val appCompat = "1.1.0"
     const val test = "1.2.0"
@@ -22,6 +24,8 @@ object Versions {
 
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.0"
+
+    const val coil = "0.3.3.1"
 
     // Plugins
     const val spotless = "5.7.0"

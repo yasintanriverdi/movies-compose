@@ -52,12 +52,24 @@ android {
                 type = "String",
                 name = "TMDB_API_BASE_URL", value = "\"https://api.themoviedb.org/3/\""
             )
+            it.buildConfigField(
+                type = "String",
+                name = "SMALL_IMAGE_URL", value = "\"https://image.tmdb.org/t/p/w200\""
+            )
+            it.buildConfigField(
+                type = "String",
+                name = "LARGE_IMAGE_URL", value = "\"https://image.tmdb.org/t/p/w500\""
+            )
         }
     }
 }
 
 dependencies {
     implementation(Dependencies.Kotlin.stdlib)
+
+    // Coroutines
+    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Coroutines.android)
 
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
@@ -89,4 +101,7 @@ dependencies {
     implementation(Dependencies.Retrofit.moshi)
     implementation(Dependencies.OkHttp.okhttp)
     implementation(Dependencies.OkHttp.loggingInterceptor)
+
+    implementation(Dependencies.coil)
+
 }

@@ -20,7 +20,8 @@ object Dependencies {
             const val foundation = "androidx.compose.foundation:foundation:${Versions.compose}"
             const val material = "androidx.compose.material:material:${Versions.compose}"
             const val livedata = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
-            const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
+            const val navigation =
+                "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
             const val paging = "androidx.paging:paging-compose:${Versions.composePaging}"
         }
 
@@ -52,4 +53,12 @@ object Dependencies {
         const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     }
+
+    object Coroutines {
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        const val android =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    }
+
+    const val coil = "dev.chrisbanes.accompanist:accompanist-coil:${Versions.coil}"
 }

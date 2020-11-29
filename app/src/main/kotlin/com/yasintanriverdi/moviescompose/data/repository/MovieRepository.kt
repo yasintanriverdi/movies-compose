@@ -12,14 +12,10 @@ class MovieRepository @Inject constructor(
     private val movieListMapper: MoviesResponseToMovieListMapper
 ) {
 
-    suspend fun fetchMovies(page: Int, category: String): RepositoryResult<List<Movie>> {
-        // TODO - check DB first
-        val result = movieRemoteDataSource.fetchMovies(page, category).toRepositoryResult(movieListMapper) // TODO - use mapper
+    suspend fun fetchMovies(page: Int, category: String = CATEGORY_POPULAR): RepositoryResult<List<Movie>> =
+        movieRemoteDataSource.fetchMovies(page, category).toRepositoryResult(movieListMapper)
 
-        if (result is RepositoryResult.Success) {
-            // TODO - save movies to DB
-        }
-
-        return result
+    companion object {
+        const val CATEGORY_POPULAR = "popular"
     }
 }
