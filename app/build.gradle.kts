@@ -103,5 +103,5 @@ dependencies {
     implementation(Dependencies.OkHttp.loggingInterceptor)
 
     implementation(Dependencies.coil)
-
+    implementation(Dependencies.insets)
 }

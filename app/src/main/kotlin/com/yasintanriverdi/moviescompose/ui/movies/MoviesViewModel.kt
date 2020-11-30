@@ -32,10 +32,11 @@ class MoviesViewModel @ViewModelInject constructor(
 
     fun fetchMovie(movieId: String) {
         viewModelScope.launch {
+            _viewStateFlow.value = viewStateFlow.value.copy(uiState = UIState.LOADING)
             when (val movieResult = fetchMovieItemUseCase.fetchMovieById(movieId)) {
                 is RepositoryResult.Success -> {
                     _viewStateFlow.value = MovieDetailViewState(
-                        uiState = UIState.CONTENT,
+                        uiState = if (movieResult.result != null) UIState.CONTENT else UIState.ERROR,
                         movie = movieResult.result
                     )
                 }
@@ -45,5 +46,4 @@ class MoviesViewModel @ViewModelInject constructor(
             }
         }
     }
-
 }

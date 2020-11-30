@@ -8,5 +8,4 @@ class FetchMovieItemUseCase @Inject constructor(
 ) {
 
     suspend fun fetchMovieById(movieId: String) = movieRepository.fetchMovieById(movieId)
-
 }

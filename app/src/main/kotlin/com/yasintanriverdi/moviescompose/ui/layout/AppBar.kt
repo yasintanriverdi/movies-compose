@@ -16,14 +16,20 @@ import androidx.compose.ui.unit.dp
 fun MoviesAppBar(
     title: @Composable () -> Unit,
     navigationIcon: @Composable (() -> Unit)? = null,
-    actions: @Composable RowScope.() -> Unit = {}
+    actions: @Composable RowScope.() -> Unit = {},
 ) {
+    val backgroundColor =
+        if (MaterialTheme.colors.isLight) MaterialTheme.colors.primary else MaterialTheme.colors.surface
+    val contentColor =
+        if (MaterialTheme.colors.isLight) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSurface
     TopAppBar(
         navigationIcon = navigationIcon,
         elevation = 6.dp,
         modifier = Modifier.preferredHeight(56.dp),
         title = title,
-        actions = actions
+        actions = actions,
+        backgroundColor = backgroundColor,
+        contentColor = contentColor
     )
 }
 
@@ -33,15 +39,18 @@ fun NavigateBackAppBar(
     backClick: () -> Unit,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
+    val tintColor =
+        if (MaterialTheme.colors.isLight) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSurface
     MoviesAppBar(
         title = title,
         navigationIcon = {
             IconButton(onClick = { backClick() }) {
                 Icon(
                     Icons.Filled.ArrowBack,
-                    tint = MaterialTheme.colors.onPrimary
+                    tint = tintColor
                 )
             }
         },
-        actions = actions)
+        actions = actions
+    )
 }

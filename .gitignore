@@ -2,6 +2,7 @@
 .gradle
 build/
 
+
 captures
 
 /local.properties
@@ -15,6 +16,10 @@ captures
 .idea/modules.xml
 .idea/compiler.xml
 /.idea/jarRepositories.xml
+.idea/markdown-navigator-enh.xml
+.idea/markdown-navigator.xml
+.idea/misc.xml
+.idea/codeStyles
 gradle.xml
 *.iml
 

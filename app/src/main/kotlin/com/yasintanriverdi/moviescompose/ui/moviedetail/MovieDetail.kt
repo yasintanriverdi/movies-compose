@@ -1,12 +1,19 @@
 package com.yasintanriverdi.moviescompose.ui.moviedetail
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
@@ -23,6 +30,9 @@ import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
 import dev.chrisbanes.accompanist.coil.CoilImage
+import dev.chrisbanes.accompanist.insets.AmbientWindowInsets
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
+import dev.chrisbanes.accompanist.insets.toPaddingValues
 
 @Composable
 fun MovieDetail(
@@ -31,43 +41,50 @@ fun MovieDetail(
     movieId: String
 ) {
 
+    val viewState by moviesViewModel.viewStateFlow.collectAsState()
     moviesViewModel.fetchMovie(movieId)
 
-    val stateFlow = moviesViewModel.viewStateFlow.collectAsState(
-        initial = MovieDetailViewState(uiState = UIState.LOADING)
-    )
-    val viewState = stateFlow.value
-
-    when (viewState.uiState) {
-        UIState.LOADING -> LoadingView(modifier = Modifier.fillMaxSize())
-        UIState.CONTENT -> MovieDetailContent(
-            backClick = { navController.navigateUp() },
-            movie = viewState.movie
-        )
-        UIState.ERROR -> {
-            ErrorItem(
-                message = "Error occurred",
-                onClickRetry = { moviesViewModel.fetchMovie(movieId) }
+    Scaffold(
+        topBar = {
+            MovieDetailAppBar(
+                backClick = { navController.navigateUp() },
+                title = viewState.movie?.title ?: ""
             )
-        }
-        UIState.IDLE -> {
-            // do nothing
+        },
+        modifier = Modifier.statusBarsPadding(),
+    ) {
+        val modifier = Modifier.padding(it)
+        Crossfade(viewState.uiState) { uiState ->
+            when (uiState) {
+                UIState.LOADING -> LoadingView(modifier = modifier.fillMaxSize())
+                UIState.CONTENT -> MovieDetailContent(viewState.movie!!, modifier = modifier)
+                UIState.ERROR -> {
+                    ErrorItem(
+                        message = "Error occurred",
+                        onClickRetry = { moviesViewModel.fetchMovie(movieId) }
+                    )
+                }
+                UIState.IDLE -> {
+                    // do nothing
+                }
+            }
         }
     }
 }
 
 @Composable
-fun MovieDetailContent(backClick: () -> Unit, movie: Movie?) {
-    movie?.let {
-        Column {
-            MovieDetailAppBar(backClick = backClick, title = movie.title!!)
-            MovieDetailImage(
-                imageUrl = BuildConfig.LARGE_IMAGE_URL + movie.backdropUrl,
-                modifier = Modifier.fillMaxWidth().height(240.dp)
+fun MovieDetailContent(movie: Movie, modifier: Modifier = Modifier) {
+    Column(modifier.fillMaxSize()) {
+        MovieDetailImage(
+            imageUrl = BuildConfig.LARGE_IMAGE_URL + movie.backdropUrl,
+            modifier = Modifier.fillMaxWidth().height(240.dp)
+        )
+        ScrollableColumn(
+            contentPadding = AmbientWindowInsets.current.systemBars.toPaddingValues(
+                top = false
             )
-            ScrollableColumn {
-                MovieDetailDescription(description = movie.overview!!)
-            }
+        ) {
+            MovieDetailDescription(description = movie.overview!!)
         }
     }
 }
@@ -78,7 +95,6 @@ fun MovieDetailAppBar(backClick: () -> Unit, title: String) {
         title = {
             Text(
                 text = title,
-                color = MaterialTheme.colors.onPrimary,
                 fontWeight = FontWeight.Bold
             )
         },
