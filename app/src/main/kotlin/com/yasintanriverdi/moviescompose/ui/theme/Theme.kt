@@ -5,18 +5,18 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.onCommit
 import androidx.compose.ui.graphics.Color
+import com.yasintanriverdi.moviescompose.ui.utils.SysUiController
 
 private val DarkColorPalette = darkColors(
     primary = green200,
     primaryVariant = green700,
     secondary = teal200,
     background = Color.Black,
-    surface = Color.Black,
-    onPrimary = Color.Black,
+    onPrimary = Color.White,
     onSecondary = Color.White,
     onBackground = Color.White,
-    onSurface = Color.White,
     error = Color.Red,
 )
 
@@ -44,15 +44,16 @@ fun MoviesTheme(
         LightColorPalette
     }
 
-    val typography = if (darkTheme) {
-        DarkTypography
-    } else {
-        LightTypography
+    val sysUiController = SysUiController.current
+    onCommit(sysUiController, colors.surface) {
+        sysUiController.setSystemBarsColor(
+            color = colors.background.copy(alpha = 0.95f)
+        )
     }
 
     MaterialTheme(
         colors = colors,
-        typography = typography,
+        typography = MoviesTypography,
         shapes = shapes,
         content = content
     )

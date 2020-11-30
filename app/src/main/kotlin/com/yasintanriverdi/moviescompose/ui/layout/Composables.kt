@@ -1,7 +1,16 @@
 package com.yasintanriverdi.moviescompose.ui.layout
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.preferredWidth
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumnForIndexed
 import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.material.CircularProgressIndicator
@@ -96,7 +105,8 @@ fun LinkifyText(text: String, url: String) {
     }
     Text(
         fontSize = 16.sp,
-        text = annotatedString, modifier = Modifier.tapGestureFilter { offsetPosition ->
+        text = annotatedString,
+        modifier = Modifier.tapGestureFilter { offsetPosition ->
             layoutResult.value?.let {
                 val position = it.getOffsetForPosition(offsetPosition)
                 annotatedString.getStringAnnotations(position, position).firstOrNull()
@@ -120,7 +130,7 @@ fun LoadingView(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(color = MaterialTheme.colors.primary)
     }
 }
 

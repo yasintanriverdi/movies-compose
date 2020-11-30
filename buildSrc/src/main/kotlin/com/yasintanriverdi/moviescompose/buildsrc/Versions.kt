@@ -25,7 +25,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.0"
 
-    const val coil = "0.3.3.1"
+    const val accompanist = "0.3.3.1"
 
     // Plugins
     const val spotless = "5.7.0"

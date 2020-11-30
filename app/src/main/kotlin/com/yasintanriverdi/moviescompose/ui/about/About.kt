@@ -2,9 +2,10 @@ package com.yasintanriverdi.moviescompose.ui.about
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,17 +16,20 @@ import androidx.navigation.NavController
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.ui.layout.LinkifyText
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
+import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun About(navController: NavController) {
-    Column {
-        AboutAppBar(backClick = { navController.navigateUp() })
+    Scaffold(
+        topBar = { AboutAppBar(backClick = { navController.navigateUp() }) },
+        modifier = Modifier.statusBarsPadding()
+    ) {
+        val modifier = Modifier.padding(it)
         Column(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+            modifier = modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Text(
                 text = stringResource(id = R.string.developer_name),
                 color = MaterialTheme.colors.onSurface,
@@ -36,7 +40,6 @@ fun About(navController: NavController) {
             LinkifyText(R.string.linkedIn, R.string.url_linkedin)
         }
     }
-
 }
 
 @Composable
@@ -45,10 +48,9 @@ fun AboutAppBar(backClick: () -> Unit) {
         title = {
             Text(
                 text = stringResource(R.string.about),
-                color = MaterialTheme.colors.onPrimary,
                 fontWeight = FontWeight.Bold
             )
         },
-        backClick = backClick
+        backClick = backClick,
     )
 }
