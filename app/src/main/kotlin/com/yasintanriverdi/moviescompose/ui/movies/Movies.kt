@@ -23,21 +23,18 @@ import androidx.paging.compose.items
 import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.model.Movie
+import com.yasintanriverdi.moviescompose.ui.layout.ErrorItem
+import com.yasintanriverdi.moviescompose.ui.layout.LoadingItem
+import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen
-import com.yasintanriverdi.moviescompose.ui.state.ErrorItem
-import com.yasintanriverdi.moviescompose.ui.state.LoadingItem
-import com.yasintanriverdi.moviescompose.ui.state.LoadingView
 import dev.chrisbanes.accompanist.coil.CoilImage
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 
-@ExperimentalCoroutinesApi
 @Composable
 fun Movies(
     navController: NavController,
     moviesViewModel: MoviesViewModel
 ) {
-
     MovieList(movies = moviesViewModel.movies) {
         navController.navigate("${NavScreen.MovieDetails.route}/$it")
     }

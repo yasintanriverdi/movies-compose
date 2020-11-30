@@ -4,4 +4,12 @@
 
   <string name="about">About</string>
 
+  <string name="developer_name">Yasin Tanriverdi</string>
+
+  <string name="github">Github</string>
+  <string name="linkedIn">LinkedIn</string>
+
+  <string name="url_github">https://github.com/yasintanriverdi</string>
+  <string name="url_linkedin">https://www.linkedin.com/in/yasin-tanriverdi/</string>
+
 </resources>

@@ -1,7 +1,6 @@
 package com.yasintanriverdi.moviescompose.ui.home
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ConstraintLayout
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Icon
@@ -17,22 +16,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.yasintanriverdi.moviescompose.R
+import com.yasintanriverdi.moviescompose.ui.layout.MoviesAppBar
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen
 import com.yasintanriverdi.moviescompose.ui.movies.Movies
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
-import com.yasintanriverdi.moviescompose.ui.layout.MoviesAppBar
 
 @Composable
 fun Home(
     navController: NavController,
     moviesViewModel: MoviesViewModel
 ) {
-    val modifier = Modifier.fillMaxWidth().fillMaxHeight()
-    ConstraintLayout(modifier = modifier) {
-        Column {
-            HomeAppBar { navController.navigate(NavScreen.About.route) }
-            Movies(navController, moviesViewModel)
-        }
+    Column(Modifier.fillMaxWidth().fillMaxHeight()) {
+        HomeAppBar { navController.navigate(NavScreen.About.route) }
+        Movies(navController, moviesViewModel)
     }
 }
 

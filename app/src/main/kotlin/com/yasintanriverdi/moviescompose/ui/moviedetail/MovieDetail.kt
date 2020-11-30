@@ -18,10 +18,10 @@ import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.model.Movie
 import com.yasintanriverdi.moviescompose.model.UIState
+import com.yasintanriverdi.moviescompose.ui.layout.ErrorItem
+import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
-import com.yasintanriverdi.moviescompose.ui.state.ErrorItem
-import com.yasintanriverdi.moviescompose.ui.state.LoadingView
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
