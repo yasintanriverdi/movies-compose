@@ -23,3 +23,7 @@ Main dependencies used in this project:
 * [Retrofit](https://github.com/square/retrofit)
 * [Moshi](https://github.com/square/moshi)
 * [Paging](https://developer.android.com/topic/libraries/architecture/paging)
+
+### Data Flow
+
+<img src="https://github.com/yasintanriverdi/movies-compose/blob/main/images/data_flow.png">
