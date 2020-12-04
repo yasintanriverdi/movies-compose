@@ -1,6 +1,7 @@
 package com.yasintanriverdi.moviescompose.network.model.entity
 
 import com.squareup.moshi.Json
+import com.yasintanriverdi.moviescompose.model.Movie
 
 data class MovieResponseItem(
     val id: Int,
@@ -15,3 +16,19 @@ data class MovieResponseItem(
     val homePage: String?,
     @field:Json(name = "imdb_id") val imdbId: String?
 )
+
+fun MovieResponseItem.toMovie(): Movie {
+    return Movie(
+        id = this.id,
+        posterUrl = this.posterUrl,
+        backdropUrl = this.backdropUrl,
+        overview = this.overview,
+        releaseDate = this.releaseDate,
+        hasVideo = this.hasVideo,
+        voteAverage = this.voteAverage,
+        voteCount = this.voteCount,
+        imdbId = this.imdbId,
+        homePage = this.homePage,
+        title = this.title
+    )
+}

@@ -60,7 +60,7 @@ fun <T> LazyGridFor(
             it.forEachIndexed { rowIndex, item ->
                 Box(
                     modifier = Modifier.weight(1F).align(Alignment.Top).padding(8.dp),
-                    alignment = Alignment.Center
+                    contentAlignment = Alignment.Center
                 ) {
                     itemContent(item, index * rows + rowIndex)
                 }

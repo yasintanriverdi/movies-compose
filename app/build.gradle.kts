@@ -5,7 +5,6 @@ plugins {
     id(Plugins.androidApplication)
     id(Plugins.daggerHilt)
     kotlin(Plugins.kotlinAndroid)
-    kotlin(Plugins.kotlinAndroidExtensions)
     kotlin(Plugins.kotlinKapt)
 }
 

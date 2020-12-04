@@ -115,7 +115,7 @@ fun MovieItem(movie: Movie, onMovieItemClick: (Int) -> Unit) {
                     modifier = Modifier.preferredSize(120.dp)
                 )
                 MovieTitle(
-                    movie.title!!,
+                    movie.title,
                     modifier = Modifier.weight(1f).padding(start = 16.dp)
                 )
             }

@@ -1,6 +1,5 @@
 package com.yasintanriverdi.moviescompose.model
 
-import com.yasintanriverdi.moviescompose.data.mapper.Mapper
 import com.yasintanriverdi.moviescompose.network.model.NetworkResponse
 
 sealed class RepositoryResult<out T : Any> {
@@ -29,12 +28,12 @@ fun <T : Any> NetworkResponse<T, Any>.toRepositoryResult(): RepositoryResult<T> 
     }
 }
 
-fun <T : Any, U : Any> NetworkResponse<T, Any>.toRepositoryResult(mapper: Mapper<T, U>): RepositoryResult<U> {
+fun <T : Any, U : Any> NetworkResponse<T, Any>.toRepositoryResult(mapper: (from: T) -> U): RepositoryResult<U> {
     return when (this) {
         is NetworkResponse.Success -> RepositoryResult.Success(
-            if (this.body != null) mapper.map(
-                this.body
-            ) else null
+            if (this.body != null)
+                mapper(this.body)
+            else null
         )
         is NetworkResponse.ApiError -> RepositoryResult.Fail(this)
         is NetworkResponse.NetworkError -> RepositoryResult.Exception(this.error)

@@ -13,21 +13,21 @@ data class Movie(
     val voteCount: Int,
     val imdbId: String?,
     val homePage: String?,
-    val title: String?
+    val title: String
 )
 
-fun movieResponseItemToMovie(from: MovieResponseItem): Movie {
-    return Movie(
-        id = from.id,
-        posterUrl = from.posterUrl,
-        backdropUrl = from.backdropUrl,
-        overview = from.overview,
-        releaseDate = from.releaseDate,
-        hasVideo = from.hasVideo,
-        voteAverage = from.voteAverage,
-        voteCount = from.voteCount,
-        imdbId = from.imdbId,
-        homePage = from.homePage,
-        title = from.title
+fun Movie.toMovieResponseItem(): MovieResponseItem {
+    return MovieResponseItem(
+        id = this.id,
+        posterUrl = this.posterUrl,
+        backdropUrl = this.backdropUrl,
+        overview = this.overview,
+        releaseDate = this.releaseDate,
+        hasVideo = this.hasVideo,
+        voteAverage = this.voteAverage,
+        voteCount = this.voteCount,
+        imdbId = this.imdbId,
+        homePage = this.homePage,
+        title = this.title
     )
 }

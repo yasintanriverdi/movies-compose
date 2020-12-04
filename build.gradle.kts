@@ -15,9 +15,9 @@ buildscript {
     }
 
     dependencies {
-        classpath(Classpaths.gradle)
-        classpath(Classpaths.kotlinGradle)
-        classpath(Classpaths.daggerHilt)
+        classpath(Classpaths.androidGradlePlugin)
+        classpath(Classpaths.kotlinGradlePlugin)
+        classpath(Classpaths.daggerHiltPlugin)
     }
 }
 
@@ -62,9 +62,13 @@ subprojects {
         kotlinOptions {
             freeCompilerArgs = listOf(
                 "-Xallow-jvm-ir-dependencies",
+                // Opt-in to experimental compose APIs
+                "-Xopt-in=kotlin.RequiresOptIn",
+                // Enable experimental coroutines APIs, including collectAsState()
+                "-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
                 "-Xskip-prerelease-check"
             )
-            jvmTarget = "1.8"
+            jvmTarget = "11"
             useIR = true
         }
     }
@@ -89,8 +93,8 @@ subprojects {
                     }
 
                     compileOptions {
-                        targetCompatibility = JavaVersion.VERSION_1_8
-                        sourceCompatibility = JavaVersion.VERSION_1_8
+                        targetCompatibility = JavaVersion.VERSION_11
+                        sourceCompatibility = JavaVersion.VERSION_11
                     }
 
                     sourceSets{
@@ -111,8 +115,8 @@ subprojects {
 
             is JavaPlugin -> {
                 the<JavaPluginConvention>().apply {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
+                    sourceCompatibility = JavaVersion.VERSION_11
+                    targetCompatibility = JavaVersion.VERSION_11
                 }
             }
         }
