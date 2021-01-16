@@ -6,8 +6,6 @@ object Dependencies {
     }
 
     object AndroidX {
-        const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-
         const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
         const val activityKtx = "androidx.activity:activity-ktx:${Versions.activity}"

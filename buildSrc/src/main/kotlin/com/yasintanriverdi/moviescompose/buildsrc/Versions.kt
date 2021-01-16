@@ -1,23 +1,22 @@
 object Versions {
     // Kotlin/ Gradle / AGP
     const val kotlin = "1.4.21"
-    const val androidGradlePlugin = "7.0.0-alpha03"
+    const val androidGradlePlugin = "7.0.0-alpha04"
     const val coroutines = "1.4.2"
 
     // AndroidX
-    const val appCompat = "1.1.0"
     const val test = "1.2.0"
     const val coreKtx = "1.3.2"
     const val lifecycle = "2.2.0"
     const val activity = "1.1.0"
-    const val paging = "3.0.0-alpha11"
+    const val paging = "3.0.0-alpha12"
 
     // Compose
-    const val compose = "1.0.0-alpha09"
-    const val composeNavigation = "1.0.0-alpha04"
-    const val composePaging = "1.0.0-alpha04"
+    const val compose = "1.0.0-alpha10"
+    const val composeNavigation = "1.0.0-alpha05"
+    const val composePaging = "1.0.0-alpha05"
     // Compose Helper
-    const val accompanist = "0.4.1"
+    const val accompanist = "0.4.2"
 
     // Google
     const val material = "1.2.1"
