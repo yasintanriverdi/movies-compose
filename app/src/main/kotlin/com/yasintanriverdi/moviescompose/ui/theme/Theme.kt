@@ -5,10 +5,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.onCommit
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
-import com.yasintanriverdi.moviescompose.ui.utils.SysUiController
+import com.yasintanriverdi.moviescompose.ui.utils.LocalSysUiController
 
 private val DarkColorPalette = darkColors(
     primary = green200,
@@ -45,15 +45,15 @@ fun MoviesTheme(
         LightColorPalette
     }
 
-    val sysUiController = SysUiController.current
-    onCommit(sysUiController, colors.surface) {
+    val sysUiController = LocalSysUiController.current
+    SideEffect(effect = {
         sysUiController.setSystemBarsColor(
             color = colors.background.copy(alpha = 0.85f),
             transformColorForLightContent = { original ->
                 colors.onBackground.copy(alpha = 0.2f).compositeOver(original)
             }
         )
-    }
+    })
 
     MaterialTheme(
         colors = colors,

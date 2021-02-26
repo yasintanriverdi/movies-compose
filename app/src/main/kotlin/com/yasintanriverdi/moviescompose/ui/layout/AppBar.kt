@@ -1,7 +1,7 @@
 package com.yasintanriverdi.moviescompose.ui.layout
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.preferredHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -25,7 +25,7 @@ fun MoviesAppBar(
     TopAppBar(
         navigationIcon = navigationIcon,
         elevation = 6.dp,
-        modifier = Modifier.preferredHeight(56.dp),
+        modifier = Modifier.height(56.dp),
         title = title,
         actions = actions,
         backgroundColor = backgroundColor,
@@ -46,7 +46,8 @@ fun NavigateBackAppBar(
         navigationIcon = {
             IconButton(onClick = { backClick() }) {
                 Icon(
-                    Icons.Filled.ArrowBack,
+                    imageVector = Icons.Filled.ArrowBack,
+                    contentDescription = "Toolbar back",
                     tint = tintColor
                 )
             }

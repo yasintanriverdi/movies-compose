@@ -2,12 +2,13 @@ package com.yasintanriverdi.moviescompose.ui.moviedetail
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -16,10 +17,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
@@ -30,9 +31,7 @@ import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
 import dev.chrisbanes.accompanist.coil.CoilImage
-import dev.chrisbanes.accompanist.insets.AmbientWindowInsets
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
-import dev.chrisbanes.accompanist.insets.toPaddingValues
 
 @Composable
 fun MovieDetail(
@@ -79,11 +78,8 @@ fun MovieDetailContent(movie: Movie, modifier: Modifier = Modifier) {
             imageUrl = BuildConfig.LARGE_IMAGE_URL + movie.backdropUrl,
             modifier = Modifier.fillMaxWidth().height(240.dp)
         )
-        ScrollableColumn(
-            contentPadding = AmbientWindowInsets.current.systemBars.toPaddingValues(
-                top = false
-            )
-        ) {
+
+        Column(Modifier.verticalScroll(rememberScrollState())) {
             MovieDetailDescription(description = movie.overview!!)
         }
     }
@@ -109,14 +105,23 @@ fun MovieDetailImage(
 ) {
     CoilImage(
         data = imageUrl,
+        contentDescription = "Movie Detail Poster",
         modifier = modifier,
         fadeIn = true,
         contentScale = ContentScale.Crop,
         loading = {
-            Image(vectorResource(id = R.drawable.ic_image), alpha = 0.45f)
+            Image(
+                painter = painterResource(id = R.drawable.ic_image),
+                contentDescription = "Movie Detail Loading Image",
+                alpha = 0.45f
+            )
         },
         error = {
-            Image(vectorResource(id = R.drawable.ic_image_broken), alpha = 0.45f)
+            Image(
+                painter = painterResource(id = R.drawable.ic_image_broken),
+                contentDescription = "Movie Detail Error Image",
+                alpha = 0.45f
+            )
         }
     )
 }
@@ -126,7 +131,7 @@ fun MovieDetailDescription(description: String) {
     Text(
         modifier = Modifier.padding(all = 16.dp),
         text = description,
-        letterSpacing = TextUnit.Sp(2),
+        letterSpacing = 2.sp,
         color = MaterialTheme.colors.onBackground
     )
 }

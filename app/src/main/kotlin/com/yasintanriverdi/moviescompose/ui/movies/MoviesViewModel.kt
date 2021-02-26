@@ -1,6 +1,5 @@
 package com.yasintanriverdi.moviescompose.ui.movies
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -13,12 +12,15 @@ import com.yasintanriverdi.moviescompose.model.RepositoryResult
 import com.yasintanriverdi.moviescompose.model.UIState
 import com.yasintanriverdi.moviescompose.ui.moviedetail.MovieDetailViewState
 import com.yasintanriverdi.moviescompose.ui.movies.paging.MoviePagingSource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MoviesViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MoviesViewModel @Inject constructor(
     private val fetchMoviesUseCase: FetchMoviesUseCase,
     private val fetchMovieItemUseCase: FetchMovieItemUseCase
 ) : ViewModel() {

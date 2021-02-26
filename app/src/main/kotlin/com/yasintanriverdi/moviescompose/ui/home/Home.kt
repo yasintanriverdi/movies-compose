@@ -52,7 +52,11 @@ fun HomeAppBar(aboutClick: () -> Unit) {
         },
         actions = {
             IconButton(onClick = { aboutClick() }) {
-                Icon(Icons.Filled.Info, tint = MaterialTheme.colors.onPrimary)
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = "Home Info",
+                    tint = MaterialTheme.colors.onPrimary
+                )
             }
         }
     )
