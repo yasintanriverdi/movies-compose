@@ -17,7 +17,7 @@ TMDB_API_KEY = <put your API key>
 Main dependencies used in this project:
 
 * [Jetpack Compose](https://developer.android.com/jetpack/compose)
-* [Coil for Jetpack Compose](https://github.com/chrisbanes/accompanist/tree/main/coil)
+* [Coil for Jetpack Compose](https://github.com/google/accompanist/tree/main/coil)
 * [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)
 * [Dagger-Hilt](https://dagger.dev/hilt/)
 * [Retrofit](https://github.com/square/retrofit)
