@@ -17,15 +17,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.navigate
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
+import com.google.accompanist.coil.rememberCoilPainter
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.model.Movie
@@ -33,9 +34,6 @@ import com.yasintanriverdi.moviescompose.ui.layout.ErrorItem
 import com.yasintanriverdi.moviescompose.ui.layout.LoadingItem
 import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen
-import dev.chrisbanes.accompanist.coil.CoilImage
-import dev.chrisbanes.accompanist.insets.LocalWindowInsets
-import dev.chrisbanes.accompanist.insets.toPaddingValues
 import kotlinx.coroutines.flow.Flow
 
 @Composable
@@ -56,7 +54,11 @@ fun MovieList(
     val lazyMovieItems = movies.collectAsLazyPagingItems()
 
     LazyColumn(
-        contentPadding = LocalWindowInsets.current.systemBars.toPaddingValues(top = false)
+        Modifier.padding(
+            rememberInsetsPaddingValues(
+                insets = LocalWindowInsets.current.systemBars, applyTop = false
+            )
+        )
     ) {
         items(lazyMovieItems) { movie ->
             MovieItem(movie = movie!!, onMovieItemClick = onMovieItemClick)
@@ -116,7 +118,9 @@ fun MovieItem(movie: Movie, onMovieItemClick: (Int) -> Unit) {
                 )
                 MovieTitle(
                     movie.title,
-                    modifier = Modifier.weight(1f).padding(start = 16.dp)
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 16.dp)
                 )
             }
         }
@@ -128,26 +132,20 @@ fun MovieImage(
     imageUrl: String,
     modifier: Modifier = Modifier
 ) {
-    CoilImage(
-        data = imageUrl,
-        contentDescription = "Movie Item Image",
-        modifier = modifier,
-        fadeIn = true,
-        contentScale = ContentScale.Crop,
-        loading = {
-            Image(
-                painter = painterResource(id = R.drawable.ic_image),
-                contentDescription = "Movie Item Loading",
-                alpha = 0.45f
-            )
+    val painter = rememberCoilPainter(
+        request = imageUrl,
+        requestBuilder = {
+            placeholder(R.drawable.ic_image)
+            error(R.drawable.ic_image_broken)
         },
-        error = {
-            Image(
-                painter = painterResource(id = R.drawable.ic_image_broken),
-                contentDescription = "Movie Item Error",
-                alpha = 0.45f
-            )
-        }
+        fadeIn = true
+    )
+
+    Image(
+        painter = painter,
+        modifier = modifier,
+        contentDescription = "Movie Item Image",
+        contentScale = ContentScale.Crop
     )
 }
 

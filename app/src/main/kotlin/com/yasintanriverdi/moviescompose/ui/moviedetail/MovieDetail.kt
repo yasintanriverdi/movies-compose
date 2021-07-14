@@ -17,11 +17,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.accompanist.coil.rememberCoilPainter
+import com.google.accompanist.insets.statusBarsPadding
 import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.model.Movie
@@ -30,8 +31,6 @@ import com.yasintanriverdi.moviescompose.ui.layout.ErrorItem
 import com.yasintanriverdi.moviescompose.ui.layout.LoadingView
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
-import dev.chrisbanes.accompanist.coil.CoilImage
-import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun MovieDetail(
@@ -76,7 +75,9 @@ fun MovieDetailContent(movie: Movie, modifier: Modifier = Modifier) {
     Column(modifier.fillMaxSize()) {
         MovieDetailImage(
             imageUrl = BuildConfig.LARGE_IMAGE_URL + movie.backdropUrl,
-            modifier = Modifier.fillMaxWidth().height(240.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(240.dp)
         )
 
         Column(Modifier.verticalScroll(rememberScrollState())) {
@@ -103,26 +104,20 @@ fun MovieDetailImage(
     imageUrl: String,
     modifier: Modifier = Modifier
 ) {
-    CoilImage(
-        data = imageUrl,
-        contentDescription = "Movie Detail Poster",
-        modifier = modifier,
-        fadeIn = true,
-        contentScale = ContentScale.Crop,
-        loading = {
-            Image(
-                painter = painterResource(id = R.drawable.ic_image),
-                contentDescription = "Movie Detail Loading Image",
-                alpha = 0.45f
-            )
+    val painter = rememberCoilPainter(
+        request = imageUrl,
+        requestBuilder = {
+            placeholder(R.drawable.ic_image)
+            error(R.drawable.ic_image_broken)
         },
-        error = {
-            Image(
-                painter = painterResource(id = R.drawable.ic_image_broken),
-                contentDescription = "Movie Detail Error Image",
-                alpha = 0.45f
-            )
-        }
+        fadeIn = true
+    )
+
+    Image(
+        painter = painter,
+        modifier = modifier,
+        contentDescription = "Movie Detail Poster",
+        contentScale = ContentScale.Crop
     )
 }
 

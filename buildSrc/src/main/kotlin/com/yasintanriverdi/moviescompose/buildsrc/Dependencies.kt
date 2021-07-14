@@ -24,7 +24,6 @@ object Dependencies {
         }
 
         object Lifecycle {
-            const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
             const val runtime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
             const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
             const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
@@ -33,12 +32,14 @@ object Dependencies {
 
     object Google {
         const val material = "com.google.android.material:material:${Versions.material}"
+
+        const val coil = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
+        const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
     }
 
     object Hilt {
         const val core = "com.google.dagger:hilt-android:${Versions.hilt}"
-        const val viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltLifecycle}"
-        const val compiler = "androidx.hilt:hilt-compiler:${Versions.hiltLifecycle}"
+        const val compiler = "androidx.hilt:hilt-compiler:${Versions.hiltCompiler}"
         const val androidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     }
 
@@ -58,6 +59,4 @@ object Dependencies {
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     }
 
-    const val coil = "dev.chrisbanes.accompanist:accompanist-coil:${Versions.accompanist}"
-    const val insets = "dev.chrisbanes.accompanist:accompanist-insets:${Versions.accompanist}"
 }

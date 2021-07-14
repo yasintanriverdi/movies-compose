@@ -9,12 +9,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AppConfigs.Versions.compileSdk)
+    compileSdk = AppConfigs.Versions.compileSdk
 
     defaultConfig {
         applicationId = AppConfigs.applicationId
-        minSdkVersion(AppConfigs.Versions.minSdk)
-        targetSdkVersion(AppConfigs.Versions.targetSdk)
+        minSdk = AppConfigs.Versions.minSdk
+        targetSdk = AppConfigs.Versions.targetSdk
         versionCode = AppConfigs.versionCode
         versionName = AppConfigs.versionName
 
@@ -74,7 +74,6 @@ dependencies {
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.activityKtx)
     implementation(Dependencies.AndroidX.paging)
-    implementation(Dependencies.AndroidX.Lifecycle.extensions)
     implementation(Dependencies.AndroidX.Lifecycle.runtime)
     implementation(Dependencies.AndroidX.Lifecycle.livedata)
     implementation(Dependencies.AndroidX.Lifecycle.viewmodel)
@@ -90,8 +89,11 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.material)
+    implementation(Dependencies.Google.coil)
+    implementation(Dependencies.Google.insets)
+
+    // Hilt
     implementation(Dependencies.Hilt.core)
-    implementation(Dependencies.Hilt.viewmodel)
     kapt(Dependencies.Hilt.compiler)
     kapt(Dependencies.Hilt.androidCompiler)
 
@@ -100,7 +102,4 @@ dependencies {
     implementation(Dependencies.Retrofit.moshi)
     implementation(Dependencies.OkHttp.okhttp)
     implementation(Dependencies.OkHttp.loggingInterceptor)
-
-    implementation(Dependencies.coil)
-    implementation(Dependencies.insets)
 }

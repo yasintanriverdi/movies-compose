@@ -7,13 +7,13 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.core.view.WindowCompat
+import com.google.accompanist.insets.ProvideWindowInsets
 import com.yasintanriverdi.moviescompose.ui.main.Main
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
 import com.yasintanriverdi.moviescompose.ui.theme.MoviesTheme
 import com.yasintanriverdi.moviescompose.ui.utils.LocalSysUiController
 import com.yasintanriverdi.moviescompose.ui.utils.SystemUiController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

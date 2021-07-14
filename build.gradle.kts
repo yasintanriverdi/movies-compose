@@ -11,7 +11,7 @@ plugins {
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -24,7 +24,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -58,10 +58,9 @@ subprojects {
         }
     }
 
-    project.tasks.withType(KotlinCompile::class.java) {
+    project.tasks.withType(KotlinCompile::class) {
         kotlinOptions {
             freeCompilerArgs = listOf(
-                "-Xallow-jvm-ir-dependencies",
                 // Opt-in to experimental compose APIs
                 "-Xopt-in=kotlin.RequiresOptIn",
                 // Enable experimental coroutines APIs, including collectAsState()
@@ -69,7 +68,6 @@ subprojects {
                 "-Xskip-prerelease-check"
             )
             jvmTarget = "11"
-            useIR = true
         }
     }
 
@@ -80,8 +78,8 @@ subprojects {
                     compileSdkVersion(AppConfigs.Versions.compileSdk)
 
                     defaultConfig {
-                        minSdkVersion(AppConfigs.Versions.minSdk)
-                        targetSdkVersion(AppConfigs.Versions.targetSdk)
+                        minSdk = AppConfigs.Versions.minSdk
+                        targetSdk = AppConfigs.Versions.minSdk
                     }
 
                     buildFeatures.compose = true
@@ -89,7 +87,6 @@ subprojects {
 
                     composeOptions {
                         kotlinCompilerExtensionVersion = Versions.compose
-                        kotlinCompilerVersion = Versions.kotlin
                     }
 
                     compileOptions {
@@ -114,7 +111,7 @@ subprojects {
             }
 
             is JavaPlugin -> {
-                the<JavaPluginConvention>().apply {
+                the<JavaPluginExtension>().apply {
                     sourceCompatibility = JavaVersion.VERSION_11
                     targetCompatibility = JavaVersion.VERSION_11
                 }

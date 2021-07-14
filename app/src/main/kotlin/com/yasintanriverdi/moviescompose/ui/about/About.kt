@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
+import com.google.accompanist.insets.statusBarsPadding
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.ui.layout.LinkifyText
 import com.yasintanriverdi.moviescompose.ui.layout.NavigateBackAppBar
-import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun About(navController: NavController) {

@@ -15,13 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
-import androidx.navigation.compose.navigate
+import com.google.accompanist.insets.statusBarsPadding
 import com.yasintanriverdi.moviescompose.R
 import com.yasintanriverdi.moviescompose.ui.layout.MoviesAppBar
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen
 import com.yasintanriverdi.moviescompose.ui.movies.Movies
 import com.yasintanriverdi.moviescompose.ui.movies.MoviesViewModel
-import dev.chrisbanes.accompanist.insets.statusBarsPadding
 
 @Composable
 fun Home(
