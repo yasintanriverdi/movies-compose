@@ -89,7 +89,6 @@ dependencies {
 
     // Google
     implementation(Dependencies.Google.material)
-    implementation(Dependencies.Google.coil)
     implementation(Dependencies.Google.insets)
 
     // Hilt
@@ -102,4 +101,6 @@ dependencies {
     implementation(Dependencies.Retrofit.moshi)
     implementation(Dependencies.OkHttp.okhttp)
     implementation(Dependencies.OkHttp.loggingInterceptor)
+
+    implementation(Dependencies.coil)
 }

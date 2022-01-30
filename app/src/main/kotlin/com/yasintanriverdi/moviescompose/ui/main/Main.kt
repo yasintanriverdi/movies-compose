@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.yasintanriverdi.moviescompose.ui.about.About
 import com.yasintanriverdi.moviescompose.ui.home.Home
 import com.yasintanriverdi.moviescompose.ui.main.NavScreen.MovieDetails.argMovieId

@@ -33,7 +33,6 @@ object Dependencies {
     object Google {
         const val material = "com.google.android.material:material:${Versions.material}"
 
-        const val coil = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
         const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
     }
 
@@ -58,5 +57,7 @@ object Dependencies {
         const val android =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     }
+
+    const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
 
 }

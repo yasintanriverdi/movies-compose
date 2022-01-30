@@ -24,7 +24,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.yasintanriverdi.moviescompose.BuildConfig
@@ -132,13 +132,13 @@ fun MovieImage(
     imageUrl: String,
     modifier: Modifier = Modifier
 ) {
-    val painter = rememberCoilPainter(
-        request = imageUrl,
-        requestBuilder = {
+    val painter = rememberImagePainter(
+        data = imageUrl,
+        builder = {
+            crossfade(true)
             placeholder(R.drawable.ic_image)
             error(R.drawable.ic_image_broken)
-        },
-        fadeIn = true
+        }
     )
 
     Image(

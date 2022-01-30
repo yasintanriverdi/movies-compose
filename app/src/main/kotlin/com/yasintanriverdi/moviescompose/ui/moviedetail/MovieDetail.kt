@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import com.google.accompanist.insets.statusBarsPadding
 import com.yasintanriverdi.moviescompose.BuildConfig
 import com.yasintanriverdi.moviescompose.R
@@ -104,13 +104,13 @@ fun MovieDetailImage(
     imageUrl: String,
     modifier: Modifier = Modifier
 ) {
-    val painter = rememberCoilPainter(
-        request = imageUrl,
-        requestBuilder = {
+    val painter = rememberImagePainter(
+        data = imageUrl,
+        builder = {
+            crossfade(true)
             placeholder(R.drawable.ic_image)
             error(R.drawable.ic_image_broken)
-        },
-        fadeIn = true
+        }
     )
 
     Image(

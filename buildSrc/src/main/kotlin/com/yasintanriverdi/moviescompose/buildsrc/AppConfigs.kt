@@ -9,9 +9,9 @@ object AppConfigs {
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     object Versions {
-        const val compileSdk = 30
+        const val compileSdk = 31
         const val minSdk = 24
-        const val targetSdk = 30
+        const val targetSdk = 31
 
         internal const val versionMajor = 0
         internal const val versionMinor = 0
